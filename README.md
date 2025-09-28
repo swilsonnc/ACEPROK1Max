@@ -133,6 +133,7 @@ Connect the ACE Pro to a regular USB port and configure the sensor pins accordin
 |---------|-------------|
 | `ACE_TEST_RUNOUT_SENSOR` | Test sensor states |
 | `ACE_DEBUG` | Debug ACE communication |
+| `ACE_GET_CURRENT_INDEX` | Get currently loaded slot index |
 
 ### Dryer Control
 | Command | Description | Parameters |
