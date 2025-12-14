@@ -17,7 +17,7 @@ A comprehensive Klipper driver for the Anycubic Color Engine Pro multi-material 
 
 Base driver fork:
 
-https://github.com/BlackFrogKok/BunnyACE
+https://github.com/szkrisz/ACEPROSV08
 
 
 - **Multi-Material Support**: Full 4-slot filament management
@@ -49,16 +49,16 @@ https://github.com/BlackFrogKok/BunnyACE
 ### 1. Clone Repository
 ```bash
 cd ~
-git clone https://github.com/swilsonnc/ACEPROSV08.git
+git clone https://github.com/swilsonnc/ACEPROK1Max.git
 ```
 
 ### 2. Create Symbolic Links
 ```bash
 # Link the driver to Klipper extras
-ln -sf ~/ACEPROSV08/extras/ace.py ~/klipper/klippy/extras/ace.py
+ln -sf ~/ACEPROK1Max/extras/ace.py ~/klipper/klippy/extras/ace.py
 
 # Link the configuration file
-ln -sf ~/ACEPROSV08/ace.cfg ~/printer_data/config/ace.cfg
+ln -sf ~/ACEPROK1Max/ace.cfg ~/printer_data/config/ace.cfg
 ```
 
 ### 3. Update Python Dependencies
@@ -66,31 +66,14 @@ ln -sf ~/ACEPROSV08/ace.cfg ~/printer_data/config/ace.cfg
 # Activate Klipper virtual environment
 source ~/klippy-env/bin/activate
 
-# Update pyserial to version 4.5 or higher
-pip3 install pyserial --upgrade
+# Update pyserial to version 3.5 or higher
+pip3 install pyserial==3.5
 ```
 
 ### 4. Update Printer Configuration
 Add to your `printer.cfg`:
 ```ini
 [include ace.cfg]
-```
-
-## ⚙️ Configuration
-
-### Basic Configuration (ace.cfg)
-```ini
-[ace]
-serial: /dev/ttyACM0
-baud: 115200
-extruder_sensor_pin: ^PC2
-toolhead_sensor_pin: ^PC3
-feed_speed: 50
-retract_speed: 50
-toolchange_retract_length: 150
-toolchange_load_length: 630
-toolhead_sensor_to_nozzle: 10
-endless_spool: True
 ```
 
 ### Pin Configuration
@@ -207,15 +190,15 @@ ACE_QUERY_SLOTS
 ## 🔌 Hardware Setup
 
 ### Sensor Installation
-1. **Extruder Sensor**: Install at the splitter exit point
-2. **Toolhead Sensor**: Install before the hotend entry
+1. **Extruder Sensor**: The first sensor in the extruder  
+2. **Toolhead Sensor**: The bottom sensor in the extruder at the cutter
 3. **Wiring**: Connect sensors to configured pins with pullup resistors
 
 ### USB Connection
 Connect the ACE Pro unit to your printer's host computer via USB. The driver will automatically detect the device.
 
 ### Splitter Configuration
-Use a BAMBULAB-compatible filament splitter for optimal performance with the ACE Pro system.
+Use a BAMBULAB-compatible filament splitter for optimal performance with the ACE Pro system or any good smooth printable splitter.
 
 ## 🤝 Contributing
 
@@ -234,7 +217,8 @@ This project is based on excellent work from:
 
 - **[ACEResearch](https://github.com/printers-for-people/ACEResearch.git)** - Original ACE Pro research
 - **[DuckACE](https://github.com/utkabobr/DuckACE.git)** - Base driver implementation
-- **[BunyAce](https://github.com/BlackFrogKok/BunnyACE)** - Base driver fork
+- **[BunnyAce](https://github.com/BlackFrogKok/BunnyACE)** - Base driver fork
+- **[ACEPROSV08](https://github.com/szkrisz/ACEPROSV08)** - Forked from
 
 ## 📄 License
 
