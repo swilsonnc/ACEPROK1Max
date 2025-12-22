@@ -54,6 +54,7 @@ git clone https://github.com/swilsonnc/ACEPROK1Max.git
 ```bash
 # Link the driver to Klipper extras
 ln -sf ~/ACEPROK1Max/extras/ace.py /usr/share/klipper/klippy/extras/ace.py
+ln -sf ~/ACEPROK1Max/extras/temperature_ace.py /usr/share/klipper/klippy/extras/temperature_ace.py
 
 # Copy the configuration file
 cp ~/ACEPROK1Max/ace.cfg /usr/data/printer_data/config/ace.cfg
