@@ -15,10 +15,16 @@ A comprehensive Klipper driver for the Anycubic Color Engine Pro multi-material 
 - [Contributing](#-contributing)
 - [Credits](#-credits)
 
-Base driver fork:
+## 📜 Credits
 
-https://github.com/szkrisz/ACEPROSV08
+This project is based on excellent work from:
 
+- **[ACEResearch](https://github.com/printers-for-people/ACEResearch.git)** - Original ACE Pro research
+- **[DuckACE](https://github.com/utkabobr/DuckACE.git)** - Base driver implementation
+- **[BunnyAce](https://github.com/BlackFrogKok/BunnyACE)** - Base driver fork
+- **[ACEPROSV08](https://github.com/szkrisz/ACEPROSV08)** - Forked from
+
+## ✅ Features
 
 - **Multi-Material Support**: Full 4-slot filament management
 - **Endless Spool**: Automatic filament switching on runout
@@ -225,15 +231,6 @@ Contributions are welcome! Please feel free to submit issues, feature requests, 
 3. Make your changes
 4. Test thoroughly
 5. Submit a pull request
-
-## 📜 Credits
-
-This project is based on excellent work from:
-
-- **[ACEResearch](https://github.com/printers-for-people/ACEResearch.git)** - Original ACE Pro research
-- **[DuckACE](https://github.com/utkabobr/DuckACE.git)** - Base driver implementation
-- **[BunnyAce](https://github.com/BlackFrogKok/BunnyACE)** - Base driver fork
-- **[ACEPROSV08](https://github.com/szkrisz/ACEPROSV08)** - Forked from
 
 ## 📄 License
 
