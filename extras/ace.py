@@ -19,12 +19,14 @@ class BunnyAce:
 
         self.serial_name = config.get('serial', '/dev/ttyACM0')
         self.baud = config.getint('baud', 115200)
+        splitter_sensor_pin = config.get('splitter_sensor_pin', None)
         extruder_sensor_pin = config.get('extruder_sensor_pin', None)
         toolhead_sensor_pin = config.get('toolhead_sensor_pin', None)
         self.feed_speed = config.getint('feed_speed', 50)
         self.retract_speed = config.getint('retract_speed', 50)
         self.toolchange_retract_length = config.getint('toolchange_retract_length', 150)
         self.toolchange_load_length = config.getint('toolchange_load_length', 630)
+        self.toolchange_load_length_runout = config.getint('toolchange_load_length_runout', 150)
         self.toolhead_sensor_to_nozzle_length = config.getint('toolhead_sensor_to_nozzle', 0)
         # self.extruder_to_blade_length = config.getint('extruder_to_blade', None)
         self.bowden_tube_length = config.getint('bowden_tube_length', 1000)
@@ -114,6 +116,7 @@ class BunnyAce:
             desc="Query all slot inventory as JSON"
         )
 
+        self._create_mmu_sensor(config, splitter_sensor_pin, "splitter_sensor")
         self._create_mmu_sensor(config, extruder_sensor_pin, "extruder_sensor")
         self._create_mmu_sensor(config, toolhead_sensor_pin, "toolhead_sensor")
         self.printer.register_event_handler('klippy:ready', self._handle_ready)
@@ -231,7 +234,7 @@ class BunnyAce:
             return eventtime + 0.1
 
         payload_len = struct.unpack('<H', buffer[2:4])[0]
-        logging.info(str(buffer))
+      #  logging.info(str(buffer))
         payload = buffer[4:4 + payload_len]
 
         crc_data = buffer[4 + payload_len:4 + payload_len + 2]
@@ -651,9 +654,10 @@ class BunnyAce:
             self.endless_spool_runout_detected = False
         self._park_in_progress = True
         self.gcode.run_script_from_command('_ACE_PRE_TOOLCHANGE FROM=' + str(was) + ' TO=' + str(tool))
-        self.gcode.run_script_from_command('CUT_TIP')
 
         logging.info('ACE: Toolchange ' + str(was) + ' => ' + str(tool))
+        if was == -1:
+            self.gcode.run_script_from_command('CUT_TIP')
         if was != -1:
             self._disable_feed_assist(was)
             self.wait_ace_ready()
@@ -718,11 +722,11 @@ class BunnyAce:
             return
 
         try:
-            sensor_extruder = self.printer.lookup_object("filament_switch_sensor extruder_sensor", None)
-            if sensor_extruder:
+            sensor_splitter = self.printer.lookup_object("filament_switch_sensor splitter_sensor", None)
+            if sensor_splitter:
                 # Check both runout helper and direct endstop state
-                runout_helper_present = bool(sensor_extruder.runout_helper.filament_present)
-                endstop_triggered = self._check_endstop_state('extruder_sensor')
+                runout_helper_present = bool(sensor_splitter.runout_helper.filament_present)
+                endstop_triggered = self._check_endstop_state('splitter_sensor')
                 
                 # Log sensor states for debugging (remove after testing)
                 # logging.info(f"ACE Debug: runout_helper={runout_helper_present}, endstop={endstop_triggered}")
@@ -739,7 +743,7 @@ class BunnyAce:
             logging.info(f'ACE: Runout detection error: {str(e)}')
 
     def _execute_endless_spool_change(self):
-        """Execute the endless spool toolchange - simplified for extruder sensor only"""
+        """Execute the endless spool toolchange - simplified for splitter sensor only"""
         if self.endless_spool_in_progress:
             return
 
@@ -772,18 +776,18 @@ class BunnyAce:
                 self._disable_feed_assist(current_tool)
                 self.wait_ace_ready()
 
-            # Step 2: Feed filament from next slot until it reaches extruder sensor
-            sensor_extruder = self.printer.lookup_object("filament_switch_sensor extruder_sensor", None)
+            # Step 2: Feed filament from next slot until it reaches splitter sensor
+            sensor_splitter = self.printer.lookup_object("filament_switch_sensor splitter_sensor", None)
             
-            # Feed filament from new slot until extruder sensor triggers
-            self._feed(next_tool, self.toolchange_load_length, self.retract_speed)
+            # Feed filament from new slot until splitter sensor triggers
+            self._feed(next_tool, self.toolchange_load_length_runout, self.retract_speed)
             self.wait_ace_ready()
 
-            # Wait for filament to reach extruder sensor
-            while not bool(sensor_extruder.runout_helper.filament_present):
+            # Wait for filament to reach splitter sensor
+            while not bool(sensor_splitter.runout_helper.filament_present):
                 self.dwell(delay=0.1)
 
-            if not bool(sensor_extruder.runout_helper.filament_present):
+            if not bool(sensor_splitter.runout_helper.filament_present):
                 raise ValueError("Filament stuck during endless spool change")
 
             # Step 3: Enable feed assist for new slot
@@ -918,12 +922,12 @@ class BunnyAce:
 
     def cmd_ACE_TEST_RUNOUT_SENSOR(self, gcmd):
         try:
-            sensor_extruder = self.printer.lookup_object("filament_switch_sensor extruder_sensor", None)
-            if sensor_extruder:
-                runout_helper_present = bool(sensor_extruder.runout_helper.filament_present)
-                endstop_triggered = self._check_endstop_state('extruder_sensor')
+            sensor_splitter = self.printer.lookup_object("filament_switch_sensor splitter_sensor", None)
+            if sensor_splitter:
+                runout_helper_present = bool(sensor_splitter.runout_helper.filament_present)
+                endstop_triggered = self._check_endstop_state('splitter_sensor')
                 
-                gcmd.respond_info(f"ACE: Extruder sensor states:")
+                gcmd.respond_info(f"ACE: Splitter sensor states:")
                 gcmd.respond_info(f"  - Runout helper filament present: {runout_helper_present}")
                 gcmd.respond_info(f"  - Endstop triggered: {endstop_triggered}")
                 gcmd.respond_info(f"  - Endless spool enabled: {self.endless_spool_enabled}")
@@ -934,7 +938,7 @@ class BunnyAce:
                 would_trigger = not runout_helper_present or not endstop_triggered
                 gcmd.respond_info(f"  - Would trigger runout: {would_trigger}")
             else:
-                gcmd.respond_info("ACE: Extruder sensor not found")
+                gcmd.respond_info("ACE: Splitter sensor not found")
         except Exception as e:
             gcmd.respond_info(f"ACE: Error testing sensor: {str(e)}")
 
