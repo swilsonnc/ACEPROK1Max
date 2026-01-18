@@ -406,8 +406,15 @@ class BunnyAce:
     def _create_mmu_sensor(self, config, pin, name):
         section = "filament_switch_sensor %s" % name
         config.fileconfig.add_section(section)
-        config.fileconfig.set(section, "switch_pin", pin)
-        config.fileconfig.set(section, "pause_on_runout", "False")
+        if name is "extruder_sensor" or "toolhead_sensor":
+            config.fileconfig.set(section, "switch_pin", pin)
+            config.fileconfig.set(section, "pause_on_runout", "False")
+        if name is "splitter_sensor":
+            config.fileconfig.set(section, "switch_pin", pin)
+            config.fileconfig.set(section, "pause_on_runout", "False")
+            config.fileconfig.set(section, "pause_delay", "5.0")
+            config.fileconfig.set(section, "event_delay", "1.0")
+            config.fileconfig.set(section, "runout_gcode", "\n\tFILAMENT_RUNOUT_HANDLER")
         fs = self.printer.load_object(config, section)
 
         ppins = self.printer.lookup_object('pins')
@@ -529,7 +536,7 @@ class BunnyAce:
             self.gcode.respond_info('Disabled ACE feed assist')
 
         self.send_request(request={"method": "stop_feed_assist", "params": {"index": index}}, callback=callback)
-        self.dwell(0.3)
+#        self.dwell(0.3)
 
     cmd_ACE_DISABLE_FEED_ASSIST_help = 'Disables ACE feed assist'
 
@@ -615,7 +622,7 @@ class BunnyAce:
         if not bool(sensor_extruder.runout_helper.filament_present):
             raise ValueError("Filament stuck " + str(bool(sensor_extruder.runout_helper.filament_present)))
         else:
-            self.variables['ace_filament_pos'] = "spliter"
+            self.variables['ace_filament_pos'] = "splitter"
 
         while not self._check_endstop_state('toolhead_sensor'):
             self._extruder_move(1, 5)
@@ -661,11 +668,11 @@ class BunnyAce:
         if was != -1:
             self._disable_feed_assist(was)
             self.wait_ace_ready()
-            if self.variables.get('ace_filament_pos', "spliter") == "nozzle":
+            if self.variables.get('ace_filament_pos', "splitter") == "nozzle":
                 self.gcode.run_script_from_command('CUT_TIP')
                 self.variables['ace_filament_pos'] = "toolhead"
 
-            if self.variables.get('ace_filament_pos', "spliter") == "toolhead":
+            if self.variables.get('ace_filament_pos', "splitter") == "toolhead":
                 while bool(sensor_extruder.runout_helper.filament_present):
                     self._extruder_move(-50, 10)
                     self._retract(was, 100, self.retract_speed)
@@ -676,7 +683,7 @@ class BunnyAce:
 
             self._retract(was, self.toolchange_retract_length, self.retract_speed)
             self.wait_ace_ready()
-            self.variables['ace_filament_pos'] = "spliter"
+            self.variables['ace_filament_pos'] = "splitter"
 
             if tool != -1:
                 self._park_to_toolhead(tool)
@@ -784,8 +791,8 @@ class BunnyAce:
             self.wait_ace_ready()
 
             # Wait for filament to reach splitter sensor
-            while not bool(sensor_splitter.runout_helper.filament_present):
-                self.dwell(delay=0.1)
+#            while not bool(sensor_splitter.runout_helper.filament_present):
+#                self.dwell(delay=0.1)
 
             if not bool(sensor_splitter.runout_helper.filament_present):
                 raise ValueError("Filament stuck during endless spool change")
