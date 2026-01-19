@@ -51,11 +51,11 @@ This project is based on excellent work from:
 
 ## Images
 <picture>
-  <img src="img/IMG_6935.jpeg" alt="" style="width:200px;">
-  <img src="img/IMG_6936.jpeg" alt="" style="width:200px;">
-  <img src="img/IMG_6937.jpeg" alt="" style="width:200px;">
-  <img src="img/IMG_6938.jpeg" alt="" style="width:200px;">
-  <img src="img/IMG_6939.jpeg" alt="" style="width:200px;">
+  <img src="img/IMG_6935.jpeg" alt="" style="width:180px;">
+  <img src="img/IMG_6936.jpeg" alt="" style="width:180px;">
+  <img src="img/IMG_6937.jpeg" alt="" style="width:180px;">
+  <img src="img/IMG_6938.jpeg" alt="" style="width:180px;">
+  <img src="img/IMG_6939.jpeg" alt="" style="width:180px;">
 </picture>
 
 ## 📦 Installation
