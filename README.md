@@ -8,7 +8,7 @@ A comprehensive Klipper driver for the Anycubic Color Engine Pro multi-material 
 - [Features](#-features)
 - [Hardware Requirements](#-hardware-requirements)
 - [Installation](#-installation)
-- [Pin Configuration](#-pin-configuration)
+- [Pin Configuration](#pin-configuration)
 - [Commands Reference](#-commands-reference)
 - [Endless Spool Feature](#-endless-spool-feature)
 - [Inventory Management](#-inventory-management)
