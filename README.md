@@ -52,10 +52,10 @@ This project is based on excellent work from:
 ## Images
 <picture>
   <a href="img/IMG_6935.jpeg" target=_new><img src="img/IMG_6935.jpeg" alt="" style="width:180px;"></a>
-  <img src="img/IMG_6936.jpeg" alt="" style="width:180px;">
-  <img src="img/IMG_6937.jpeg" alt="" style="width:180px;">
-  <img src="img/IMG_6938.jpeg" alt="" style="width:180px;">
-  <img src="img/IMG_6939.jpeg" alt="" style="width:180px;">
+  <a href="img/IMG_6936.jpeg" target=_new><img src="img/IMG_6936.jpeg" alt="" style="width:180px;"></a>
+  <a href="img/IMG_6937.jpeg" target=_new><img src="img/IMG_6937.jpeg" alt="" style="width:180px;"></a>
+  <a href="img/IMG_6938.jpeg" target=_new><img src="img/IMG_6938.jpeg" alt="" style="width:180px;"></a>
+  <a href="img/IMG_6939.jpeg" target=_new><img src="img/IMG_6939.jpeg" alt="" style="width:180px;"></a>
 </picture>
 
 ## 📦 Installation
