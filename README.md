@@ -8,7 +8,7 @@ A comprehensive Klipper driver for the Anycubic Color Engine Pro multi-material 
 - [Features](#-features)
 - [Hardware Requirements](#-hardware-requirements)
 - [Installation](#-installation)
-- [Configuration](#-configuration)
+- [Pin Configuration](#-pin-configuration)
 - [Commands Reference](#-commands-reference)
 - [Endless Spool Feature](#-endless-spool-feature)
 - [Inventory Management](#-inventory-management)
@@ -100,7 +100,7 @@ Add this near the top of your start_print macro under the initial {% set extrude
 SET_GCODE_VARIABLE MACRO=_GLOBAL_VARS VARIABLE=extruder_target VALUE={params.EXTRUDER_TEMP}
 ```
 
-### Pin Configuration
+### Pin-Configuration
 ![Connector Pinout](/img/connector.png)
 
 Connect the ACE Pro to a regular USB port and configure the sensor pins according to your board layout.
