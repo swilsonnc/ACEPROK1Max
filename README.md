@@ -49,6 +49,16 @@ This project is based on excellent work from:
 - **K1 Series CFS upgrade kit**: [K1 Series CFS upgrade Kit](https://a.co/d/8LgaJeT)
 - **Filament Splitter**: [BAMBULAB filament splitter](https://www.printables.com/model/1133951-v4-toolhead-ideal-for-mmu-for-sv08-and-any-voron-g)
 
+## Images
+<picture>
+  <!-- Source for WebP format on large screens -->
+  <source srcset="large_image.webp" type="image/webp" media="(min-width: 800px)">
+  <!-- Source for WebP format on smaller screens -->
+  <source srcset="small_image.webp" type="image/webp">
+  <!-- Fallback for browsers without WebP support or if no source matches -->
+  <img src="default_image.jpg" alt="Description of the image">
+</picture>
+
 ## 📦 Installation
 
 ### 1. Clone Repository
