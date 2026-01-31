@@ -55,6 +55,8 @@ class BunnyAce:
         # Default data to prevent exceptions
         self._info = {
             'status': 'ready',
+            'model': 'Unknown',
+            'firmware': 'Unknown',
             'dryer': {
                 'status': 'stop',
                 'target_temp': 0,
@@ -68,34 +70,34 @@ class BunnyAce:
             'cont_assist_time': 0.0,
             'slots': [
                 {
-                    'index': 0,
+                    'index': i,
                     'status': 'empty',
                     'sku': '',
                     'type': '',
                     'color': [0, 0, 0]
-                },
-                {
-                    'index': 1,
-                    'status': 'empty',
-                    'sku': '',
-                    'type': '',
-                    'color': [0, 0, 0]
-                },
-                {
-                    'index': 2,
-                    'status': 'empty',
-                    'sku': '',
-                    'type': '',
-                    'color': [0, 0, 0]
-                },
-                {
-                    'index': 3,
-                    'status': 'empty',
-                    'sku': '',
-                    'type': '',
-                    'color': [0, 0, 0]
-                }
-            ]
+                } for i in range(4)]
+#                {
+#                    'index': 1,
+#                    'status': 'empty',
+#                    'sku': '',
+#                    'type': '',
+#                    'color': [0, 0, 0]
+#                },
+#                {
+#                    'index': 2,
+#                    'status': 'empty',
+#                    'sku': '',
+#                    'type': '',
+#                    'color': [0, 0, 0]
+#                },
+#                {
+#                    'index': 3,
+#                    'status': 'empty',
+#                    'sku': '',
+#                    'type': '',
+#                    'color': [0, 0, 0]
+#                }
+#            ]
         }
 
         # Add inventory for 4 slots - load from persistent variables if available
@@ -104,7 +106,7 @@ class BunnyAce:
             self.inventory = saved_inventory
         else:
             self.inventory = [
-                {"status": "empty", "color": [0, 0, 0], "material": "", "temp": 0} for _ in range(4)
+                {"index": i, "status": "empty", "color": [0, 0, 0], "material": "", "temp": 0} for i in range(4)
             ]
         # Register inventory commands
         self.gcode.register_command(
@@ -461,6 +463,11 @@ class BunnyAce:
                 self.reader_timer = self.reactor.register_timer(self._reader, self.reactor.NOW)
                 self.send_request(request={"method": "get_info"},
                                   callback=lambda self, response: self.gcode.respond_info(str(response)))
+                def info_callback(response):
+                        res = response['result']
+                        logging.info('Device info: ' + res['model'] + ' ' + res['firmware'])
+                        self.gcode.respond_info('Connected ' + res['model'] + ' ' + res['firmware'])
+                        self.send_request({"method": "get_info"}, info_callback)
                 # --- Added: Check ace_current_index and enable feed assist if needed ---
                 ace_current_index = self.variables.get('ace_current_index', -1)
                 if ace_current_index != -1:
@@ -472,7 +479,6 @@ class BunnyAce:
         except serial.serialutil.SerialException:
             self._serial = None
         return eventtime + 1
-
 
     cmd_ACE_START_DRYING_help = 'Starts ACE Pro dryer'
 
@@ -770,7 +776,7 @@ class BunnyAce:
         
         # Mark current slot as empty in inventory
         if current_tool >= 0:
-            self.inventory[current_tool] = {"status": "empty", "color": [0, 0, 0], "material": "", "temp": 0}
+            self.inventory[current_tool] = {"index": current_tool, "status": "empty", "color": [0, 0, 0], "material": "", "temp": 0}
             # Save updated inventory to persistent variables
             self.variables['ace_inventory'] = self.inventory
             self.gcode.run_script_from_command(f'SAVE_VARIABLE VARIABLE=ace_inventory VALUE=\'{json.dumps(self.inventory)}\'')
@@ -889,7 +895,7 @@ class BunnyAce:
         if idx < 0 or idx >= 4:
             raise gcmd.error('Invalid slot index')
         if gcmd.get_int('EMPTY', 0):
-            self.inventory[idx] = {"status": "empty", "color": [0, 0, 0], "material": "", "temp": 0}
+            self.inventory[idx] = {"index": idx, "status": "empty", "color": [0, 0, 0], "material": "", "temp": 0}
             # Save to persistent variables
             self.variables['ace_inventory'] = self.inventory
             self.gcode.run_script_from_command(f'SAVE_VARIABLE VARIABLE=ace_inventory VALUE=\'{json.dumps(self.inventory)}\'')
@@ -904,6 +910,7 @@ class BunnyAce:
         if len(color) != 3:
             raise gcmd.error('COLOR must be R,G,B')
         self.inventory[idx] = {
+            "index": idx,
             "status": "ready",
             "color": color,
             "material": material,
