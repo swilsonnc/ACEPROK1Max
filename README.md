@@ -2,6 +2,8 @@
 
 A comprehensive Klipper driver for the Anycubic Color Engine Pro multi-material unit, optimized for K1 Max with CFS upgrade kit and other Klipper-based 3D printers.
 
+## NOTE: DO NOT INSTALL THE CFS FIRMWARE THAT COMES WITH THE KIT.  THIS HAS NOT BEEN TESTED WITH THAT FIRMWARE.  ONLY USE THE NON-CFS FIRMWARE.
+
 ## 📋 Table of Contents
 
 - [Credits](#-credits)
