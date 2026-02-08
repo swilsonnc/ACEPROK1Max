@@ -62,7 +62,7 @@ This project is based on excellent work from:
   <a href="img/bed_exclusion.png" target=_new><img src="img/bed_exclusion.png" alt="" style="width:300px;"></a>
   <a href="img/start_gcode.png" target=_new><img src="img/start_gcode.png" alt="" style="width:300px;"></a>
   <a href="img/before_layer_change_gcode.png" target=_new><img src="img/before_layer_change_gcode.png" alt="" style="width:300px;"></a>
-  <a href="img/pause.png" target=_new><img src="img/pause.png" alt="" style="width:300px;"></a>
+  <a href="img/pause_gcode.png" target=_new><img src="img/pause_gcode.png" alt="" style="width:300px;"></a>
   <a href="img/multimaterial.png" target=_new><img src="img/multimaterial.png" alt="" style="width:300px;"></a>
   <a href="img/extruder.png" target=_new><img src="img/extruder.png" alt="" style="width:300px;"></a>
 </picture>
