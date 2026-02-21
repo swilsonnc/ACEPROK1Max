@@ -59,12 +59,6 @@ This project is based on excellent work from:
   <a href="img/IMG_6937.jpeg" target=_new><img src="img/IMG_6937.jpeg" alt="" style="width:180px;"></a>
   <a href="img/IMG_6938.jpeg" target=_new><img src="img/IMG_6938.jpeg" alt="" style="width:180px;"></a>
   <a href="img/IMG_6939.jpeg" target=_new><img src="img/IMG_6939.jpeg" alt="" style="width:180px;"></a>
-  <a href="img/bed_exclusion.png" target=_new><img src="img/bed_exclusion.png" alt="" style="width:300px;"></a>
-  <a href="img/start_gcode.png" target=_new><img src="img/start_gcode.png" alt="" style="width:300px;"></a>
-  <a href="img/before_layer_change_gcode.png" target=_new><img src="img/before_layer_change_gcode.png" alt="" style="width:300px;"></a>
-  <a href="img/pause_gcode.png" target=_new><img src="img/pause_gcode.png" alt="" style="width:300px;"></a>
-  <a href="img/multimaterial.png" target=_new><img src="img/multimaterial.png" alt="" style="width:300px;"></a>
-  <a href="img/extruder.png" target=_new><img src="img/extruder.png" alt="" style="width:300px;"></a>
 </picture>
 
 ## 📦 Installation
@@ -123,7 +117,20 @@ I use Orca Slicer and you can refer to the images above for my settings for it.
 Pay special attention to the bed exclusion settings as these are very important or your extruder
 motor may contact the cutter piece or the purge bucket and break something.
 
+Make sure you setup multiple filaments in Orca.  Make sure when you are slicing a part that you 
+click the first layer on the right hand bar and select change filament.  That will set the
+current_extruder that your macro's will need in order to work correctly.
+
 If you use a different slicer you will have to figure out where these settings go on your own.
+
+<picture>
+    <a href="img/bed_exclusion.png" target=_new><img src="img/bed_exclusion.png" alt="" style="width:300px;"></a>
+    <a href="img/start_gcode.png" target=_new><img src="img/start_gcode.png" alt="" style="width:300px;"></a>
+    <a href="img/before_layer_change_gcode.png" target=_new><img src="img/before_layer_change_gcode.png" alt="" style="width:300px;"></a>
+    <a href="img/pause_gcode.png" target=_new><img src="img/pause_gcode.png" alt="" style="width:300px;"></a>
+    <a href="img/multimaterial.png" target=_new><img src="img/multimaterial.png" alt="" style="width:300px;"></a>
+    <a href="img/extruder.png" target=_new><img src="img/extruder.png" alt="" style="width:300px;"></a>
+</picture>
 
 ### Pin-Configuration
 ![Connector Pinout](/img/connector.png)
