@@ -145,6 +145,16 @@ copy_config() {
     else
         echo "[SKIPPED] (already exists)"
     fi
+    if [ ! -f "${KLIPPER_CONFIG_HOME}/saved_variables.cfg" ]; then
+        if cp "${SRCDIR}/saved_variables.cfg" "${KLIPPER_CONFIG_HOME}/"; then
+            echo "[OK]"
+        else
+            echo "[FAILED]"
+            exit 1
+        fi
+    else
+        echo "[SKIPPED] (already exists)"
+    fi
 }
 
 install_requirements() {
@@ -269,27 +279,6 @@ fi
 
 start_service "$KLIPPER_SERVICE"
 
-echo "Operation completed successfully"
-echo "--------------------------------------------------------------------------------"
-echo "Add [include ace.cfg] near the top of your printer.cfg"
-echo "--------------------------------------------------------------------------------"
-echo "Comment out [filament_switch_sensor filament_sensor] section in printer.cfg"
-echo "--------------------------------------------------------------------------------"
-echo "Add [temperature_ace] near bottom of printer.cfg"
-echo "--------------------------------------------------------------------------------"
-echo "Add [temerature_sensor ace_chamber]"
-echo "    sensor_type: temperature_ace"
-echo "    min_temp: 0"
-echo "    max_temp: 70"
-echo "to printer.cfg"
-echo "--------------------------------------------------------------------------------"
-echo "Add the following to printer.cfg"
-echo "    [gcode_macro _GLOBAL_VARS]"
-echo "    variable_extruder_target: 0.0"
-echo "    gcode:"
-echo "--------------------------------------------------------------------------------"
-echo "Add this near the top of your start_print macro under the initial {% set extruder_temp } line"
-echo "    SET_GCODE_VARIABLE MACRO=_GLOBAL_VARS VARIABLE=extruder_target VALUE={params.EXTRUDER_TEMP}"
-echo "-"
+echo "Operation completed successfully.  Please refer to the ACEPROK1Max Github page for more info."
 exit 0
 
