@@ -1,13 +1,15 @@
-# ValgACE Dashboard - Web Interface for ACE Management
+# ACEPROK1Max ACE Dashboard - Web Interface for ACE Management
 
 A modern web interface for managing and monitoring the Anycubic Color Engine Pro via the Moonraker API.
 
+Credits go to ValgACE for creating this dashboard initially.
+
 ## Description
 
-ValgACE Dashboard is a fully functional web interface that provides:
+ACEPROK1Max ACE Dashboard is a fully functional web interface that provides:
 
 - ✅ **Status Monitoring** - Displays device status in real time
-- ✅ **Slot Management** - Loads/unloads filament, parks it on the hotend
+- ✅ **Slot Management** - Loads/unloads filament, parks it on the hotend, color, type and temp change
 - ✅ **Feed Assist** - Enables/disables feed assist for each slot with visual status indication
 - ✅ **Drying Control** - Starts and stops filament drying
 - ✅ **Filament Feed/Retract** - Manually controls feed and retract
@@ -30,7 +32,7 @@ ValgACE Dashboard is a fully functional web interface that provides:
 1. Copy all files to one folder:
 ```bash
 mkdir -p ~/ace-dashboard
-cp ~/ValgACE/web-interface/ace-dashboard.* ~/ace-dashboard/
+cp ~/ACEPROK1Max/ace-dashboard/ace-dashboard.* ~/ace-dashboard/
 ```
 
 2. Open `ace-dashboard.html` in a browser via the web server (not via `file://`)
@@ -129,7 +131,9 @@ See the comments in the `ace-dashboard-config.js` file for details.
 - Automatically updates every 5 seconds
 
 #### Slot Management
-
+- Can click on the color of the slot and change it's color
+- Can change the type of filament
+- Can change the temp of the filament
 - **Load** - loads filament from a slot (executes `ACE_CHANGE_TOOL`)
 - **Park** - parks filament to the hotend (executes `ACE_PARK_TO_TOOLHEAD`)
 - **Assist** - enables/disables feed assist for a slot (`ACE_ENABLE_FEED_ASSIST` / `ACE_DISABLE_FEED_ASSIST`)
@@ -141,7 +145,7 @@ See the comments in the `ace-dashboard-config.js` file for details.
 
 #### Drying Control
 
-1. Set the target temperature (20-55°C)
+1. Set the target temperature (20-60°C)
 2. Set the drying duration (in minutes)
 3. Click "Start Drying"
 4. To stop, click "Stop"
