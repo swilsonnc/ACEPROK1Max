@@ -68,13 +68,14 @@ cp ace-dashboard.js ~/fluidd/dist/
 1. Install a simple HTTP server:
 ```bash
 # Python 3
-python3 -m http.server 8080
+python3 -m http.server 4410
 
 # Or Node.js
-npx http-server -p 8080
+npx http-server -p 4410
 ```
+or just run python3 ace-dashboard.py from the ace-dashboard directory
 
-2. Open in a browser: `http://localhost:8080/ace-dashboard.html`
+2. Open in a browser: `http://printer-ip:4410/ace-dashboard.html`
 
 ### Option 3: Nginx (recommended for permanent use)
 
@@ -101,7 +102,7 @@ See the commented `nginx.conf.example` for more details.
 The interface automatically connects to the Moonraker API at the current host address. If you're opening the file locally, make sure:
 
 1. Moonraker is running and accessible
-2. The `ace_status.py` component is installed and loaded
+2. The `ace_status.py` component is installed and loaded.  Install to /usr/data/moonraker/moonraker/moonraker/components
 3. The browser can access the Moonraker API (CORS is configured)
 
 ### Configuring the API URL
