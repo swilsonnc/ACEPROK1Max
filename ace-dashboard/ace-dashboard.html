@@ -109,10 +109,6 @@
                 <div align="center">
                     Current Slot:
                     {{ deviceStatus.current_index === -1 ? 'None' : deviceStatus.current_index }}
-                </div>
-                <div>
-                    <span class="label">{{ t('deviceInfo.current_index') }}:</span>
-                    <span class="value">{{ deviceStatus.current_index || t('deviceInfo.current_index') }}</span>
                 </div></h2>
                 <div class="slots-grid">
                     <div 
@@ -153,6 +149,7 @@
                                     <option value="PETG">PETG</option>
                                     <option value="ABS">ABS</option>
                                     <option value="ASA">ASA</option>
+                                    <option value="OTHER">OTHER</option>
                                 </select>
                             </div>
                             <div class="info-item">
