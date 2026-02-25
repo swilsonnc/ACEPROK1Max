@@ -120,8 +120,8 @@ class AceStatus:
 #                        self.cached_firmware = result.get("firmware", "unknown")
 #                        self.last_info_update = time.time()
 
-#                    ace_data["model"] = self.cached_model
-#                    ace_data["firmware"] = self.cached_firmware
+                    ace_data["model"] = self.cached_model
+                    ace_data["firmware"] = self.cached_firmware
 
                     return ace_data
                 else:
@@ -423,7 +423,8 @@ class AceStatus:
                 "PLA": 220,
                 "PETG": 250,
                 "ABS": 250,
-                "ASA": 255
+                "ASA": 255,
+                "OTHER": 0
             }
 
             # Update slot
