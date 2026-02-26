@@ -109,16 +109,16 @@ class AceStatus:
                         pass
                     self._last_status = ace_data
 
-#                    import time
+                    import time
 
-#                    if time.time() - self.last_info_update > 60:
-#                        response = await self.klippy_apis.run_gcode(
-#                            "ACE_DEBUG METHOD=get_info"
-#                        )
-#                        result = response.get("result", {})
-#                        self.cached_model = result.get("model", "unknown")
-#                        self.cached_firmware = result.get("firmware", "unknown")
-#                        self.last_info_update = time.time()
+                    if time.time() - self.last_info_update > 300:
+                        response = await self.klippy_apis.run_gcode(
+                            "ACE_DEBUG METHOD=get_info"
+                        )
+                        result = response.get("result", {})
+                        self.cached_model = result.get("model", "unknown")
+                        self.cached_firmware = result.get("firmware", "unknown")
+                        self.last_info_update = time.time()
 
                     ace_data["model"] = self.cached_model
                     ace_data["firmware"] = self.cached_firmware
