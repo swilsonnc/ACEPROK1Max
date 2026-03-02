@@ -1,4 +1,4 @@
-Make a bckaup of your current mainsail directory.
+Make a backup of your current mainsail directory.
 ```bash
 cp -R /usr/data/mainsail /usr/data/mainsail_old
 ```
