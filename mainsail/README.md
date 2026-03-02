@@ -1,3 +1,7 @@
+<picture>
+  <a href="../img/mainsail.png" target=_new><img src="../img/mainsail.png" alt="" style="width:480px;"></a>
+</picture>
+
 Make a backup of your current mainsail directory.
 ```bash
 cp -R /usr/data/mainsail /usr/data/mainsail_old
