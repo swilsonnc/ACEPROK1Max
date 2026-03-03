@@ -21,6 +21,6 @@ chown -R 755 /usr/data/mainsail
 Reload the mainsail page.  If the panel is not showing up force refresh the page with CTRL + F5.
 Check the settings/dashboard page to make sure the panel is checked and you can move it wherever you want.
 
-This will update your mainsail to 2.17.0
+This will update your mainsail to 2.17.0 and will break if it updates to a newer version.
 
 If you encounter any bugs please let us know.
