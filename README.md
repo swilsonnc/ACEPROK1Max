@@ -38,6 +38,8 @@ This project is based on excellent work from:
 - **Temperature Monitoring**: Ace chamber temp added to Temperatures panel
 - **Debug Tools**: Comprehensive diagnostic commands
 - **Seamless Integration**: Native Klipper integration
+- **Mainsail Panel**: optional Mainsail Panel for status and control
+- **Fluidd Panel**: optional Fluidd Panel for status and control
 
 ## 🔧 Hardware Requirements
 
