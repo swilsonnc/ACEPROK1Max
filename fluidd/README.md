@@ -1,5 +1,6 @@
 <picture>
-  <a href="../img/fluidd.png" target=_new><img src="../img/fluidd.png" alt="" style="width:640px;"></a>
+  <a href="../img/fluidd.png" target=_new><img src="../img/fluidd.png" alt="" style="width:6480px;"></a>
+  <a href="../img/fluidd_printing.png" target=_new><img src="../img/fluidd_printing.png" alt="" style="width:5120px;"></a>
 </picture>
 
 Make a backup of your current fluidd directory.
