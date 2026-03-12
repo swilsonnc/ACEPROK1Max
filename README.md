@@ -259,6 +259,7 @@ Connect the ACE Pro unit to your printer's host computer via USB. The driver wil
 
 ### Splitter Configuration
 Use a BAMBULAB-compatible filament splitter for optimal performance with the ACE Pro system or any good smooth printable splitter.
+I am using this one and it has never failed me once.  [4-in-1 PTFE adapter](https://www.printables.com/model/808136-4-in-1-ptfe-adapter)
 
 ## 🤝 Contributing
 
