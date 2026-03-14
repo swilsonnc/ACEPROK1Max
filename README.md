@@ -62,7 +62,7 @@ This project is based on excellent work from:
   <a href="img/IMG_6938.jpeg" target=_new><img src="img/IMG_6938.jpeg" alt="" style="width:180px;"></a>
   <a href="img/IMG_6939.jpeg" target=_new><img src="img/IMG_6939.jpeg" alt="" style="width:180px;"></a>
   <a href="img/mainsail.png" target=_new><img src="img/mainsail.png" alt="" style="width:180px;"></a>
-  <a href="../img/fluidd.png" target=_new><img src="../img/fluidd.png" alt="" style="width:180px;"></a>
+  <a href="img/fluidd.png" target=_new><img src="img/fluidd.png" alt="" style="width:180px;"></a>
 </picture>
 
 ## 📦 Installation
