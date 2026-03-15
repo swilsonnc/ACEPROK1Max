@@ -705,9 +705,9 @@ class BunnyAce:
             self.gcode.run_script_from_command('CUT_TIP')
         if was != -1:
             self._disable_feed_assist(was)
+            self.gcode.run_script_from_command('CUT_TIP')
             self.wait_ace_ready()
             if self.variables.get('ace_filament_pos', "splitter") == "nozzle":
-                self.gcode.run_script_from_command('CUT_TIP')
                 self.variables['ace_filament_pos'] = "toolhead"
                 self.gcode.respond_info(f"ace_filament_pos set to toolhead")
             if self.variables.get('ace_filament_pos', "splitter") == "toolhead":
