@@ -268,6 +268,8 @@ I am using this one and it has never failed me once.  [4-in-1 PTFE adapter](http
 
 Contributions are welcome! Please feel free to submit issues, feature requests, or pull requests.
 
+You can also [buy me a coffee](https://ko-fi.com/swilson28) if you would like to!!
+
 ### Development Setup
 1. Fork the repository
 2. Create a feature branch
