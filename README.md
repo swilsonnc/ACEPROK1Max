@@ -80,7 +80,7 @@ git clone https://github.com/swilsonnc/ACEPROK1Max.git
 ```
 
 ### 3. Update Printer Configuration
-Add near the top of your `printer.cfg`:
+Add near the top of your `printer.cfg` (preferably above the other [include] lines):
 ```ini
 [include ace.cfg]
 ```
