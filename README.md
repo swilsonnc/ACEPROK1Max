@@ -268,7 +268,7 @@ I am using this one and it has never failed me once.  [4-in-1 PTFE adapter](http
 
 Contributions are welcome! Please feel free to submit issues, feature requests, or pull requests.
 
-You can also [buy me a coffee](https://ko-fi.com/swilson28) if you would like to!!
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H81W6DLY)
 
 ### Development Setup
 1. Fork the repository
