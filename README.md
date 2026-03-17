@@ -117,13 +117,16 @@ SET_GCODE_VARIABLE MACRO=_GLOBAL_VARS VARIABLE=extruder_target VALUE={params.EXT
 ```
 
 ### Orca SLicer Settings
-I use Orca Slicer and you can refer to the images above for my settings for it.
+I use Orca Slicer and you can refer to the images below for my settings for it.
 Pay special attention to the bed exclusion settings as these are very important or your extruder
 motor may contact the cutter piece or the purge bucket and break something.
 
 Make sure you setup multiple filaments in Orca.  Make sure when you are slicing a part that you 
 click the first layer on the right hand bar and select change filament.  That will set the
 current_extruder that your macro's will need in order to work correctly.
+
+You can also use the paint tool and paint the model with your loaded filaments and it will print it 
+that way.  Just make sure your colors and types match what is actually in the ace.
 
 If you use a different slicer you will have to figure out where these settings go on your own.
 
