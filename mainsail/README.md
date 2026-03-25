@@ -1,7 +1,7 @@
 <picture>
-  <a href="../img/mainsail.png" target=_new><img src="../img/mainsail.png" alt="" style="width:480px;"></a>
-  <a href="../img/mainsail-printing.png" target=_new><img src="../img/mainsail-printing.png" alt="" style="width:513px;"></a>
-  <a href="../img/mainsail_slot.png" target=_new><img src="../img/mainsail_slot.png" alt="" style="width:300px;"></a>
+  <a href="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/mainsail.png" target=_new><img src="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/mainsail.png" alt="" style="width:480px;"></a>
+  <a href="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/mainsail-printing.png" target=_new><img src="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/mainsail-printing.png" alt="" style="width:513px;"></a>
+  <a href="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/mainsail_slot.png" target=_new><img src="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/mainsail_slot.png" alt="" style="width:300px;"></a>
 </picture>
 
 Make a backup of your current mainsail directory.
