@@ -22,6 +22,6 @@ chown -R 755 /usr/data/fluidd
 Reload the fluidd page.  If the panel is not showing up force refresh the page with CTRL + F5.
 Check the settings/dashboard page to make sure the panel is checked and you can move it wherever you want.
 
-This will update your fluidd to 1.36.2 and will break if it updates to a newer version.
+This will update your fluidd to 1.36.2 and will break if you update it to a newer version.
 
 If you encounter any bugs please let us know.
