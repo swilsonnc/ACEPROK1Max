@@ -1,7 +1,7 @@
 <picture>
   <a href="../img/mainsail.png" target=_new><img src="../img/mainsail.png" alt="" style="width:480px;"></a>
   <a href="../img/mainsail-printing.png" target=_new><img src="../img/mainsail-printing.png" alt="" style="width:513px;"></a>
-  <a href="../img/mainsail-slot.png" target=_new><img src="../img/mainsail-slot.png" alt="" style="width:240px;"></a>
+  <a href="../img/mainsail_slot.png" target=_new><img src="../img/mainsail_slot.png" alt="" style="width:240px;"></a>
 </picture>
 
 Make a backup of your current mainsail directory.
