@@ -1,6 +1,7 @@
 <picture>
   <a href="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/fluidd.png" target=_new><img src="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/fluidd.png" alt="" style="width:480px;"></a>
   <a href="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/fluidd_printing.png" target=_new><img src="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/fluidd_printing.png" alt="" style="width:520px;"></a>
+  <a href="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/fluidd_slot.png" target=_new><img src="https://github.com/swilsonnc/ACEPROK1Max/blob/master/img/fluidd_slot.png" alt="" style="width:300px;"></a>
 </picture>
 
 Make a backup of your current fluidd directory.
